@@ -11,6 +11,9 @@ namespace Engine {
         U64 pieceBitboards[COLOR_COUNT][PIECE_TYPE_COUNT];
         U64 occupancies[COLOR_COUNT];
         U64 allPieces;
+        
+        Move lastMove;
+        bool hasLastMove;
 
         Board();
         void initStandardBoard();
