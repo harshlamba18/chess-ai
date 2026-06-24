@@ -15,6 +15,7 @@ namespace Engine
             }
         }
         allPieces = 0ULL;
+        hasLastMove = false;
     }
 
     void Board::initStandardBoard()
@@ -104,6 +105,9 @@ namespace Engine
 
     void Board::makeMove(Move move, int color)
     {
+        lastMove = move;
+        hasLastMove = true;
+
         int from = move.getFrom();
         int to = move.getTo();
 
