@@ -220,7 +220,7 @@ int main()
 
             if (aiThinking && aiDelayClock.getElapsedTime().asSeconds() > 0.6f)
             {
-                Engine::Move aiMove = Engine::AI::getBestMove(gameBoard, 3, Engine::BLACK);
+                Engine::Move aiMove = Engine::AI::getBestMove(gameBoard, 4, Engine::BLACK);
                 gameBoard.makeMove(aiMove, turn);
                 turn = Engine::WHITE;
                 
