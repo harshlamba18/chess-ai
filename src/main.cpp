@@ -5,6 +5,17 @@
 #include "Core/MoveGenerator.hpp"
 #include "Core/BitOps.hpp"
 #include "Core/AI.hpp"
+#include <filesystem>
+
+std::filesystem::path exePath =
+    std::filesystem::current_path();
+
+std::filesystem::path imagePath =
+    exePath / "assets" / "pieces.png";
+
+std::filesystem::path fontPath =
+    exePath / "assets" / "ARIALBD.TTF";
+
 
 enum GameState {
     MENU,
@@ -45,7 +56,7 @@ int main()
     sf::Color lastMoveColor(255, 255, 0, 100);
 
     sf::Texture piecesTexture;
-    if (!piecesTexture.loadFromFile("../../assets/pieces.png"))
+    if (!piecesTexture.loadFromFile(imagePath.string()))
     {
         std::cerr << "Error: Could not load pieces.png." << std::endl;
         return -1;
@@ -63,7 +74,7 @@ int main()
     int textureColMap[6] = {5, 3, 2, 4, 1, 0};
 
     sf::Font font;
-    if (!font.openFromFile("../../assets/ARIALBD.TTF"))
+    if (!font.openFromFile(fontPath.string()))
     {
         std::cerr << "Error: Could not load arial.ttf." << std::endl;
         return -1;
