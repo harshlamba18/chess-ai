@@ -139,6 +139,37 @@ This guarantees compliance with official chess movement rules.
 
 
 ---
+## Performance Benchmarks
+
+```
+--- RUNNING CHESS ENGINE BENCHMARKS ---
+
+1. Testing Hardware Intrinsics Speedup...
+Software Popcount Time: 0.144938s
+Hardware Popcount Time: 0.0142254s
+-> Intrinsic Speedup: 10.1887x faster
+
+2. Testing Move Generation Speed...
+-> Average time to generate all legal moves: 690.764 nanoseconds
+
+3. Testing Minimax & Alpha-Beta Pruning (Depth 4)...
+Nodes searched (Without Pruning): 206604
+Nodes searched (With Alpha-Beta): 17809
+-> Search space reduced by: 91.3801%
+-> Search Speed: 11598176 Nodes Per Second (NPS)
+
+--- BENCHMARKS COMPLETE. EXITING ---
+```
+
+The following benchmarks illustrate the efficiency and optimization achieved in the chess engine:
+
+*   **Hardware Intrinsics Speedup:** Leveraging compiler intrinsics (`__popcnt64`, `_BitScanForward64`) for bitwise operations resulted in a **10.19x speedup** compared to software-based implementations, significantly boosting the performance of occupancy calculations and bit manipulation routines.
+*   **Move Generation Speed:** The bitboard-based legal move generator efficiently processes positions, achieving an average generation time of **690.76 nanoseconds** per position.
+*   **Minimax & Alpha-Beta Pruning Performance (Depth 4):**
+    *   The Minimax AI, enhanced with Alpha-Beta pruning, drastically reduces the search space. It achieved a **91.38% reduction** in nodes searched (17,809 nodes vs. 206,604 nodes) compared to a pure Minimax search at Depth 4.
+    *   The AI performs searches at a rate of approximately **11.6 million nodes per second (NPS)**, demonstrating high-performance AI calculations.
+
+---
 ## Project Structure
 
 ```text
@@ -219,8 +250,7 @@ git clone https://github.com/microsoft/vcpkg.git
 Replace `PATH_TO_VCPKG` with the path to your local vcpkg installation.
 
 ```bash
-cmake -B build -S . \
--DCMAKE_TOOLCHAIN_FILE=PATH_TO_VCPKG/scripts/buildsystems/vcpkg.cmake
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=PATH_TO_VCPKG/scripts/buildsystems/vcpkg.cmake
 ```
 
 ---

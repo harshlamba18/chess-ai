@@ -10,7 +10,7 @@ namespace Engine {
 
     int Evaluation::evaluate(const Board& board) {
         int score = 0;
-
+        
         score += countBits(board.pieceBitboards[WHITE][PAWN]) * pawnValue;
         score += countBits(board.pieceBitboards[WHITE][KNIGHT]) * knightValue;
         score += countBits(board.pieceBitboards[WHITE][BISHOP]) * bishopValue;
